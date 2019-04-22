@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>航天爱威</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" href="css/index.css">
+	</head>
+
+	<body>
+		<div id="nav">
+			<img src="images/logo.png" alt="" width="120px">
+		</div>
+		<ul id="menuLeft">
+			<li data-type='1'>电子围栏</li>
+			<li data-type='2'>红外幕帘</li>
+			<li data-type='3'>巡更报警</li>
+			<li data-type='4'>巡更点位</li>
+			<li data-type='5'>门禁访客</li>
+			<li class="camera" data-type='6'>
+				<div>
+					<p>摄像机</p>
+					<img src="images/down.png" alt="" id="sanjiao" width="20px">
+				</div>
+				<ul id="cameraList">
+					<li data-type='6_1'>枪状机</li>
+					<li data-type='6_2'>球状机</li>
+					<li data-type='6_3'>安全枪状机</li>
+					<li data-type='6_4'>安全球状机</li>
+				</ul>
+
+			</li>
+		</ul>
+		<ul id="menuRight">
+			<li>选项01</li>
+			<li>选项02</li>
+			<li>选项03</li>
+			<li>选项04</li>
+		</ul>
+		<div id="floor">
+			<p class="floor_pre">
+				<img src="images/up.png" alt="" width="20px">
+			</p>
+			<div class="floor_box">
+				<ul>
+					<!-- <li>1F</li>
+					<li>2F</li>
+					<li>3F</li>
+					<li>4F</li>
+					<li>5F</li>
+					<li>6F</li>
+					<li>7F</li>
+					<li>8F</li>
+					<li>9F</li> -->
+				</ul>
+			</div>
+			<p class="floor_next">
+				<img src="images/down.png" alt="" width="20px">
+			</p>
+		</div>
+		<div id='mask'></div>
+		<div id='layerImage'>
+			<img src="" alt="" width='100%' height="100%">
+		</div>
+		
+		
+		<script src="js/jquery.min.js"></script>
+		<script src="../build/three.js"></script>
+
+		<script src="js/controls/OrbitControls.js"></script>
+		<script src="js/inflate.min.js"></script>
+		<script src="js/loaders/FBXLoader.js"></script>
+
+		<script src="js/cameras/CinematicCamera.js"></script>
+
+		<script src="js/WebGL.js"></script>
+		<script src="js/libs/stats.min.js"></script>
+		<script src="js/index.js"></script>
+	</body>
+</html>
