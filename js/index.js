@@ -247,12 +247,10 @@ function showFloor(name) {
     $('.floor_pre').hide();
     if(name == 'D031' || name == 'D032') {
         floor(6,name)
-        $('.floor_next').show();
     } else if(name == 'D03') {
         floor(5,name)
     } else if(name == 'D040') {
         floor(8,name)
-        $('.floor_next').show();
     } else {
         $('#floor').hide();
     }
@@ -260,6 +258,11 @@ function showFloor(name) {
 // 楼层
 function floor(num,name) {
     let html = '';
+    if(num > 5) {
+        $('.floor_next').show(); 
+    } else {
+        $('.floor_next').hide(); 
+    }
     for(let i = 1; i <= num; i ++) {
         let floor = name + '_' + i + 'F';
         html += '<li data-floor=' + floor + '>' + i + 'F</li>';
