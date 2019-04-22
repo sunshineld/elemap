@@ -158,5 +158,20 @@ p.floor_next {
     opacity: 0.2;
     position: absolute;
     display: none;
-    
+}
+#loading {
+    width: 100px;
+    height: 100px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    background: #eee;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+}
+#loading p {
+    margin-top: 10px;
 }

@@ -19,16 +19,16 @@ var fov = 175;
 var near = 1;
 var far = 2000;
 
-var SCREEN_WIDTH = window.innerWidth;
-var SCREEN_HEIGHT = window.innerHeight;
-var aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-var frustumSize = 600;
+// var SCREEN_WIDTH = window.innerWidth;
+// var SCREEN_HEIGHT = window.innerHeight;
+// var aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+// var frustumSize = 600;
 
 init();
 animate();
 
 function init() {
-
+    $('#loading').show();
     container = document.createElement( 'div' );
     document.body.appendChild( container );
 
@@ -36,24 +36,26 @@ function init() {
     
     // camera = new THREE.OrthographicCamera(-1, 1, -1, 1, 1, 2000);
 
-    camera = new THREE.OrthographicCamera( 0.5 * frustumSize * aspect / - 2, 0.5 * frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 1, 1000 );
+    // camera = new THREE.OrthographicCamera( 0.5 * frustumSize * aspect / - 2, 0.5 * frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 1, 1000 );
+    camera = new THREE.OrthographicCamera( -100, 260, 1, -200, 1, 1000 );
+    camera.position.set( 0, 1000, 0);
     cameraOrthoHelper = new THREE.CameraHelper( camera );
     
 
 
     
-    camera.position.set( 0, 1000, 0);
+    
     console.log('相机',camera);
 
     controls = new THREE.OrbitControls( camera );
     controls.target.set( 0, 1, 0 );
     // controls.enableZoom = false;
-    // controls.enableRotate = false;//禁止旋转
+    controls.enableRotate = false;//禁止旋转
     // console.log('鼠标',controls)
     controls.update();
 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color( 0xcccccc );
+    scene.background = new THREE.Color( 0xeeeeee );
 
     scene.add(cameraOrthoHelper);
 
@@ -82,6 +84,7 @@ function init() {
     var loader = new THREE.FBXLoader();
     loader.load( 'models/fbx/elemap.FBX', function ( object ) {
         console.log('---------object-----',object);
+        $('#loading').hide();
         object.scale.y = 0.1;
         var arr = object.children;
         for(var i = 0,len = arr.length; i < len; i ++) {
