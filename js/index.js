@@ -22,7 +22,7 @@ var far = 2000;
 // var SCREEN_WIDTH = window.innerWidth;
 // var SCREEN_HEIGHT = window.innerHeight;
 // var aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-// var frustumSize = 600;
+// var frustumSize = 500;
 
 init();
 animate();
@@ -34,12 +34,11 @@ function init() {
 
     // camera = new THREE.PerspectiveCamera( fov, window.innerWidth / window.innerHeight, near, far );
     
-    // camera = new THREE.OrthographicCamera(-1, 1, -1, 1, 1, 2000);
 
     // camera = new THREE.OrthographicCamera( 0.5 * frustumSize * aspect / - 2, 0.5 * frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 1, 1000 );
-    camera = new THREE.OrthographicCamera( -100, 260, 1, -200, 1, 1000 );
+    camera = new THREE.OrthographicCamera( -100, 260, 1, -200, 150, 1000 );
     camera.position.set( 0, 1000, 0);
-    cameraOrthoHelper = new THREE.CameraHelper( camera );
+    // cameraOrthoHelper = new THREE.CameraHelper( camera );
     
 
 
@@ -51,21 +50,21 @@ function init() {
     controls.target.set( 0, 1, 0 );
     // controls.enableZoom = false;
     controls.enableRotate = false;//禁止旋转
-    // console.log('鼠标',controls)
+    console.log('鼠标',controls)
     controls.update();
 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color( 0xeeeeee );
+    scene.background = new THREE.Color( 0xffffff );
 
-    scene.add(cameraOrthoHelper);
+    scene.add(camera);
 
-    light = new THREE.HemisphereLight( 0xcccccc, 0x444444 );
+    light = new THREE.HemisphereLight( 0xcccccc, 0x555555);
     // light.position.set( 0, 1, 0 );
     light.position.set( 10, 1, 100 );
     // console.log('半球光',light)
     scene.add( light );
 
-    light = new THREE.DirectionalLight( 0xffffff);
+    light = new THREE.DirectionalLight( 0x999999);
     // light.position.set( 0, 1, 0 );
     light.position.set( 8, 8, 1 );
     // console.log('定向光',light)
@@ -93,10 +92,16 @@ function init() {
                 arr[i].visible = false;
             } else if(arr[i].name.indexOf('摄像头') > 0) {
                 arr[i].material.transparent = true;
+                arr[i].material.color.r = 1;
+                arr[i].material.color.g = 1;
+                arr[i].material.color.b = 1;
                 cameraArr.push(arr[i]);
             } else if(arr[i].name.indexOf('更') > 0) {
                 arr[i].material.transparent = true;
                 patrolArr.push(arr[i]);
+                arr[i].material.color.r = 1;
+                arr[i].material.color.g = 1;
+                arr[i].material.color.b = 1;
             }
         }
         object.traverse( function ( child ) {
