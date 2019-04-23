@@ -50,6 +50,8 @@ function init() {
     controls.target.set( 0, 1, 0 );
     // controls.enableZoom = false;
     controls.enableRotate = false;//禁止旋转
+    controls.maxZoom = 0.025;
+    controls.minZoom = 0.005;
     console.log('鼠标',controls)
     controls.update();
 
@@ -110,11 +112,10 @@ function init() {
                 child.receiveShadow = true;
             }
         } );
-
+        
         scene.add( object );
-
+        
     } );
-
     renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -156,6 +157,7 @@ function render() {
 //鼠标滑轮
 function mousewheel(e) {
     console.log('滚动了')
+    return
     if (e.originalEvent.wheelDelta) { //判断浏览器IE，谷歌滑轮事件
         if (e.originalEvent.wheelDelta > 0) { //当滑轮向上滚动时
             fov -= (near < fov ? 1 : 0);
